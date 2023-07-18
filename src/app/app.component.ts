@@ -21,10 +21,19 @@ export class AppComponent {
   constructor(private userService: UsersService) {
     console.log("Prueba")
     this.createUser()
+
+    
+    this.userService.getUsers().subscribe(users => {
+      console.log(users)
+    })
   }
 
   async createUser() {
     const response = await this.userService.addUser(this.user)
     console.log(response)
   }
+
+
+
+
 }
