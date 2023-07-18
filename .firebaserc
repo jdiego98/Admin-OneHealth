@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "onehealth-c8e67"
+  },
+  "targets": {
+    "onehealth-c8e67": {
+      "hosting": {
+        "OneHealth": [
+          "onehealth-c8e67"
+        ]
+      }
+    }
+  }
+}
