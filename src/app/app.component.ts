@@ -8,29 +8,17 @@ import { User } from './models/user';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'OneHealth';
 
-  user: User = {
-    id: '',
-    first_name: 'Juan',
-    last_name: 'Arguello',
-    email: 'jdiegoquan@gmail.com',
-    mobile: '8682-7269'   
-  };   
+  users: any; 
 
-  constructor(private userService: UsersService) {
-    console.log("Prueba")
-    this.createUser()
 
-    
-    this.userService.getUsers().subscribe(users => {
-      console.log(users)
+  constructor(private userService: UsersService){}
+
+  ngOnInit(): void {
+    this.userService.getUsers().subscribe((data) => {
+      this.users = data;
+      console.log(data);
     })
-  }
-
-  async createUser() {
-    const response = await this.userService.addUser(this.user)
-    console.log(response)
   }
 
 

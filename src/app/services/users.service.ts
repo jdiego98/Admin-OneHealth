@@ -3,23 +3,22 @@ import { Injectable } from '@angular/core';
 import { Firestore, collection, addDoc, collectionData } from '@angular/fire/firestore';
 import { User } from '../models/user';
 import { Observable } from 'rxjs/internal/Observable';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  userRef = collection(this.firestore, 'users');
 
-  constructor(private firestore: Firestore) { }
+  constructor(private http: HttpClient) { }
 
   addUser(user: User){
     
-    return addDoc(this.userRef, user);
   }
 
-  getUsers(): Observable<User[]>{
-    return collectionData(this.userRef, {idField: 'id'}) as Observable<User[]>;    
+  getUsers(){
+   return this.http.get('http://onehealth-1.us-west-2.elasticbeanstalk.com/users')
   }
-
+  
 }
