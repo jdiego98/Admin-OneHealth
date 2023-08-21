@@ -1,0 +1,10 @@
+.flex_grow {
+  flex-grow: 1;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-self: flex-end;
+}

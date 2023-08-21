@@ -1,4 +1,20 @@
 import cloneDeep from 'lodash/fp/cloneDeep';
+import axios from 'axios';
+
+export async function apiRequest (method, endpoint, data = null) {
+  const apiURL = "http://localhost:8020/api"
+  const token = sessionStorage.getItem('token')
+  let headers = {}
+  if (token) {
+    headers.Authorization = `Bearer ${token}`
+  }
+  return axios({
+    method: method,
+    url: `${apiURL + endpoint}`,
+    data: data || {},
+    headers: headers,
+  })
+}
 
 export const copyObject = (obj) => cloneDeep(obj)
 
