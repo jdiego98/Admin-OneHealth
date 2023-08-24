@@ -4,6 +4,7 @@ import { useForm, useSessionStorage } from "hooks";
 import { init, reducer } from './state';
 import { Button, Input, Accordion, AccordionBody, AccordionHeader, AccordionItem } from 'reactstrap';
 import Nutritionist from 'screens/nutritionist'
+import Client from "screens/client"
 
 const Home = (props) => {
   const { state, handleSubmit, fieldBind, clearForm } = useForm(init, reducer)
@@ -26,23 +27,9 @@ const Home = (props) => {
           </AccordionBody>
         </AccordionItem>
         <AccordionItem>
-          <AccordionHeader targetId="2">Accordion Item 2</AccordionHeader>
+          <AccordionHeader targetId="2">Mantenimiento de clientes</AccordionHeader>
           <AccordionBody accordionId="2">
-            <strong>This is the second item&#39;s accordion body.</strong>
-            You can modify any of this with custom CSS or overriding our default
-            variables. It&#39;s also worth noting that just about any HTML can
-            go within the <code>.accordion-body</code>, though the transition
-            does limit overflow.
-          </AccordionBody>
-        </AccordionItem>
-        <AccordionItem>
-          <AccordionHeader targetId="3">Accordion Item 3</AccordionHeader>
-          <AccordionBody accordionId="3">
-            <strong>This is the third item&#39;s accordion body.</strong>
-            You can modify any of this with custom CSS or overriding our default
-            variables. It&#39;s also worth noting that just about any HTML can
-            go within the <code>.accordion-body</code>, though the transition
-            does limit overflow.
+            <Client/>
           </AccordionBody>
         </AccordionItem>
       </Accordion>

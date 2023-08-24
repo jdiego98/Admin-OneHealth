@@ -1,15 +1,14 @@
 import {useState, useReducer} from "react";
 //import { useNavigate } from "react-router-dom";
-import { useForm, useSessionStorage } from "hooks";
 import {init, reducer, handler} from './state';
-import { Button, Input } from 'reactstrap';
+import { Input } from 'reactstrap';
 import { usePersisted } from "./hooks";
 import styles from "./style.module.css"
 import { toDTO } from "./mapping";
 import { apiRequest } from "lib";
 
 
-const Nutritionist = (props) => {
+const Client = (props) => {
   const [state, dispatch] = useReducer(reducer, init)
   const [loading, setLoading] = useState(false)
   usePersisted(state, dispatch)
@@ -55,14 +54,9 @@ const Nutritionist = (props) => {
           <label htmlFor="fEmail">Email address</label>
         </div>    
         <div className="form-floating mb-3">
-          <Input type="email" className="form-control" id="fLicense" value={state.license} onChange={(event) => handler(event, 'license', dispatch)}/>
-          <label htmlFor="fLicense">Número de carnet</label>
-        </div>   
-        <div className="form-floating mb-3">
           <Input type="email" className="form-control" id="fUserStatus" value={state.userStatus} onChange={(event) => handler(event, 'userStatus', dispatch)} disabled/>
           <label htmlFor="floatingUserStatus">Estado de usuario</label>
         </div>
-        <a href="https://cpncr.com/especialistas-registrados/" target="blank">Sitio del colegio de nutricionistas</a>
         {state.id !== -1 ? <div className="d-flex flex-row justify-content-around mt-3">
           <button className="btn btn-warning" onClick={() => dispatch({type: 'CANCEL'})}>Cancelar</button>
           <button className="btn btn-primary" onClick={() => onUpdate()}>Actualizar</button>
@@ -75,7 +69,7 @@ const Nutritionist = (props) => {
     
 
 }
-export default Nutritionist;
+export default Client;
 
 function UserItem(props) {
 
@@ -86,9 +80,9 @@ function UserItem(props) {
   return (
     <li className={`p-2 border mb-2 ${styles.cursor_pointer}`} onClick={() => edit()}>
       <div className="d-flex flex-column">
-        <label htmlFor="name">{props.user.license}</label>
+        <label htmlFor="name">{props.user.username}</label>
         <div id="name" className="d-flex flex-row justify-content-between">
-          <p>{props.user.name} {props.user.lastName}</p>
+          <p>{props.user.fullName}</p>
           <p>{props.user.userStatus}</p>
         </div>
       </div>

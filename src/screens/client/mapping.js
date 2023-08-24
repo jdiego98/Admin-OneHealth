@@ -12,7 +12,6 @@ export function toDTO(state) {
       "accountNonExpired" : state.accountNonExpired,
       "accountNonLocked" : state.accountNonLocked,
       "credentialsNonExpired" : state.credentialsNonExpired,
-      "username" : state.email,
-      "gender": state.gender
+      "username" : state.email
   }
 }

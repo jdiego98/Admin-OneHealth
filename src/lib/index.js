@@ -2,7 +2,8 @@ import cloneDeep from 'lodash/fp/cloneDeep';
 import axios from 'axios';
 
 export async function apiRequest (method, endpoint, data = null) {
-  const apiURL = "http://localhost:8020/api"
+  const apiURL = "http://onehealth-1.us-west-2.elasticbeanstalk.com/api"
+  //const apiURL = "http://localhost:8020/api"
   const token = sessionStorage.getItem('token')
   let headers = {}
   if (token) {
@@ -18,7 +19,7 @@ export async function apiRequest (method, endpoint, data = null) {
 
 export const copyObject = (obj) => cloneDeep(obj)
 
-export const reducer = (state, action) => {
+export const basicReducer = (state, action) => {
   let updated = copyObject(state)
   switch (action.type) {
     case 'DIRECT':
